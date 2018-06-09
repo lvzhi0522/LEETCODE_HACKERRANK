@@ -1,0 +1,22 @@
+class Solution:
+    def isValid(self, s):
+        
+        if not s:
+            return True
+        
+        lst = list(s)
+        count = 0
+        
+        for i in range(len(lst)-1):
+            
+            if (lst[i] == '(' and lst[i+1] == ')') \
+            or (lst[i] == '[' and lst[i+1] == ']') \
+            or (lst[i] == '{' and lst[i+1] == '}'):
+                
+                lst[:i+2] = [lst[i]]+[lst[i+1]]+lst[:i]
+                count += 1
+                
+        if len(s) % 2 == 0 and count == len(lst)//2:
+            return True
+        
+        return False
