@@ -1,0 +1,20 @@
+class Solution:
+    def wordBreak(self, s, wordDict):
+        
+        if wordDict == []: return False
+        
+        n = len(s)
+        maxl = max([len(i) for i in wordDict])
+        
+        flag = [False]*(n+1)
+        flag[0] = True
+        
+        for i in range(n+1):
+            for j in range(i+1, i+maxl+1):
+                if j > n:
+                    break
+                if flag[i] == True and s[i:j] in wordDict:
+                    flag[j] = True
+        if flag[-1]:
+            return True
+        return False
