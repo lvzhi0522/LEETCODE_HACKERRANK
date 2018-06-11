@@ -1,0 +1,10 @@
+class Solution:
+    def findTheDifference(self, s, t):
+        
+        
+        lst = list(s)
+        for i in t:
+            if i in lst:
+                del lst[lst.index(i)]
+            else:
+                return i
