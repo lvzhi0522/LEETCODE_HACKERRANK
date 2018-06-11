@@ -1,0 +1,19 @@
+class Solution:
+    def lengthLongestPath(self, input):
+        
+        paths = input.split('\n')
+        tmp, max_len = [], 0
+        for p in paths:
+            lev, idx = 0, p.rfind('\t')
+            if idx == -1:
+                lev = 1
+            else:
+                p = p[idx+1:]
+                lev = idx + 2
+            while len(tmp)>= lev:
+                tmp.pop()
+            tmp.append(p)
+            if '.' in p:
+                max_len = max(max_len, len('/'.join(tmp)))
+
+        return max_len
