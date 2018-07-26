@@ -1,0 +1,27 @@
+class Solution:
+    def twoSum(self, nums, target):
+        
+        # make hash table: We reduce the look up time from O(n)O(n) to O(1)O(1) by trading space for speed. 
+        # A hash table is built exactly for this purpose, it supports fast look up in near constant time. 
+        # I say "near" because if a collision occurred, a look up could degenerate to O(n)O(n) time. 
+        # But look up in hash table should be amortized O(1)O(1) time as long as the hash function was chosen carefully.
+        
+        new_dict = {}
+        for i in range(len(nums)):
+            if target-nums[i] in new_dict:
+                return [new_dict[target-nums[i]], i]
+            new_dict[nums[i]] = i
+        
+        
+        # Approach 1: Brute Force
+        # The brute force approach is simple. 
+        # Loop through each element xx and find if there is another value that equals to target - xtarget−x.
+        # Time complexity : O(n^2) For each element, we try to find its complement by looping through the rest of array which takes O(n)O(n) time. 
+        # Therefore, the time complexity is O(n^2)
+        # Space complexity : O(1)
+
+        
+        # for i in range(len(nums)-1):
+        #     for j in range(i+1, len(nums)):
+        #         if nums[i] + nums[j] == target:
+        #             return [i,j]
