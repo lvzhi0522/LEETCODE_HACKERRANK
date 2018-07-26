@@ -1,0 +1,10 @@
+class Solution:
+    def plusOne(self, digits):
+        # res = 1
+        # for i in range(len(digits)-1,-1,-1):
+        #     digits[i], res = (digits[i]+res)%10, (digits[i]+res)//10        
+        # if res == 1:
+        #     return [1]+digits
+        # return digits
+        
+        return list(map(int, list(str(int(''.join(list(map(str,digits))))+1))))
