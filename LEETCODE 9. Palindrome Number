@@ -1,0 +1,11 @@
+class Solution:
+    def isPalindrome(self, x):
+        
+        if x >= 0:
+            y = x
+            rev = 0
+            while y != 0:
+                res, y = y%10, y//10
+                rev = rev * 10 + res
+            return True if rev == x else False
+        return False
