@@ -1,0 +1,34 @@
+class Solution:
+    def longestCommonPrefix(self, strs):
+        
+        # binary search
+        if strs == []:
+            return ''
+        
+        num = len(strs)        
+        l, r = 1, min(list(map(len, strs))),
+        
+        while l <= r:
+            m = (l+r)//2
+
+            for j in range(num):
+                if strs[j][:m] != strs[0][:m]:
+                    r = m - 1
+                    break
+                elif j == num - 1:
+                    l = m + 1
+
+        return strs[0][:r]        
+        
+        
+#         if '' in strs or strs == []:
+#             return ''
+        
+#         num = len(strs)
+#         ran = min(list(map(len, strs)))
+        
+#         for i in range(ran):
+#             for j in range(num):
+#                 if strs[j][i] != strs[0][i]:
+#                     return strs[0][:i]
+#         return strs[0][:ran]
