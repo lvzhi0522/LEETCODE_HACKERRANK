@@ -1,0 +1,18 @@
+class Solution:
+    def romanToInt(self, s):
+        
+        dic = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+        num = 0
+        for i in range(len(str(s))-1):
+            if s[i] == 'C' and s[i+1] in ['M','D']:
+                num -= dic[s[i]]
+                continue
+            if s[i] == 'X' and s[i+1] in ['C','L']:
+                num -= dic[s[i]]
+                continue
+            if s[i] == 'I' and s[i+1] in ['X','V']:
+                num -= dic[s[i]]
+                continue
+            num += dic[s[i]]
+
+        return num + dic[s[-1]]
