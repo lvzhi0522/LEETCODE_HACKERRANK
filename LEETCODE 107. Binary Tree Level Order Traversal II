@@ -1,0 +1,30 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def levelOrderBottom(self, root):
+        
+        if not root: return []
+        
+        res = []
+        
+        traverse = [root]
+        
+        while traverse:        
+            
+            layer = [node.val for node in traverse]
+            
+            res.insert(0, layer)
+            
+            traverse = [kid for node in traverse for kid in (node.left, node.right) if kid]
+            
+        return res   
+            
+            # old_tra, traverse = traverse, []
+            # for item in old_tra:
+            #     if item:
+            #         traverse.extend([item.left, item.right])
