@@ -1,0 +1,57 @@
+class Solution:
+    def addBinary(self, a, b):
+        
+        sums = list(str(int(a)+int(b)))
+        result = []
+        carry = 0
+        for i in range(len(sums)-1,-1,-1):
+            if int(sums[i]) + carry <= 1:
+                result.insert(0, str(int(sums[i]) + carry))
+                carry = 0 
+            if int(sums[i]) + carry >= 2:
+                result.insert(0, str(int(sums[i]) + carry - 2))
+                carry = 1
+        if carry == 1: result.insert(0, str(carry))
+        return ''.join(result)
+        
+        
+#         result = []
+#         carry = False
+#         while a or b:
+#             if not a: a = ['0']
+#             if not b: b = ['0']
+                
+#             if a[-1] == '1' and b[-1] == '1' and carry:
+#                 result.append('1')
+#                 carry = True
+#                 a = a[:-1]
+#                 b = b[:-1]
+#                 continue
+#             if (a[-1] == '1' and b[-1] == '0' and carry)\
+#             or (a[-1] == '0' and b[-1] == '1' and carry)\
+#             or (a[-1] == '1' and b[-1] == '1' and not carry):
+#                 result.append('0')
+#                 carry = True
+#                 a = a[:-1]
+#                 b = b[:-1]
+#                 continue
+#             if (a[-1] == '0' and b[-1] == '0' and carry)\
+#             or (a[-1] == '0' and b[-1] == '1' and not carry)\
+#             or (a[-1] == '1' and b[-1] == '0' and not carry):
+#                 result.append('1')
+#                 carry = False
+#                 a = a[:-1]
+#                 b = b[:-1]
+#                 continue
+#             if a[-1] == '0' and b[-1] == '0' and not carry:
+#                 result.append('0')
+#                 carry = False
+#                 a = a[:-1]
+#                 b = b[:-1]
+#                 continue
+
+            
+#         result.reverse()
+#         if not carry:
+#             return ''.join(result)
+#         return ''.join(['1']+result)
