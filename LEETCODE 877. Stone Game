@@ -1,0 +1,25 @@
+class Solution:
+    def stoneGame(self, piles):
+#DP        
+        cache = {}
+        for i in range(len(piles)):
+            cache[(i,i)] = piles[i]
+        
+        for j in range(1,len(piles)):
+            for i in range(j-1, -1,-1):
+                cache[(i,j)] = max(piles[j]-cache[(i,j-1)],  piles[i]-cache[(i+1,j)])
+                
+        return cache[(0, len(piles)-1)] > 0        
+        
+# recursive        
+# class Solution:
+    
+#     def stoneGame(self, piles):
+        
+#         return self.even_A_win(piles, 0, 0)
+        
+#     def even_A_win(self, piles, A, B):
+        
+#         if len(piles) == 2: return True if A + max(piles[0],piles[1]) > B + min(piles[0],piles[1]) else False
+        
+#         return (self.even_A_win(piles[1:-1], A+piles[0], B+piles[-1]) and self.even_A_win(piles[2:], A+piles[0], B+piles[1])) or (self.even_A_win(piles[1:-1], A+piles[-1], B+piles[0]) and self.even_A_win(piles[:-2], A+piles[-1], B+piles[-2]))
