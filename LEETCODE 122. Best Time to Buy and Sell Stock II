@@ -1,0 +1,14 @@
+class Solution:
+    def maxProfit(self, prices):
+        
+        if not prices: return 0
+        
+        gain, buy = 0, prices[0]
+        
+        for i in prices:
+            if i > buy:
+                gain += i- buy
+                
+            buy = i
+            
+        return gain
