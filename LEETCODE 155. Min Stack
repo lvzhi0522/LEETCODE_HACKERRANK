@@ -1,0 +1,50 @@
+class MinStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stk = list()
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: void
+        """
+        
+        if not self.stk: 
+            self.stk.append((x, x))
+        else: 
+            self.stk.append((x, min(x, self.stk[-1][-1])))
+        
+
+    def pop(self):
+        """
+        :rtype: void
+        """
+        
+        if not self.stk:
+            raise ValueError("Empty stack Exception")
+        else:
+            self.stk.pop()
+        
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        
+        if not self.stk:
+            raise ValueError("Empty stack Exception")
+        else:
+            return self.stk[-1][0]
+        
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        if not self.stk:
+            raise ValueError("Empty stack Exception")
+        else:
+            return self.stk[-1][1] 
