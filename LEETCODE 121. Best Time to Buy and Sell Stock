@@ -1,0 +1,25 @@
+class Solution:
+    def maxProfit(self, prices):
+        
+        if not prices: return 0
+        
+        gain = 0
+        buy = prices[0]
+        for i in prices:
+            if i < buy:
+                buy = i
+            elif i - buy > gain:
+                gain = i - buy
+        return gain
+        
+        
+        
+#         if not prices: return 0
+        
+#         gain = 0
+        
+#         for i in range(len(prices)-1):
+#             for j in range(i+1, len(prices)):
+#                 if prices[j] - prices[i] > gain:
+#                     gain = prices[j] - prices[i] 
+#         return gain
