@@ -1,0 +1,19 @@
+class Solution(object):
+    def convertToTitle(self, n):
+        
+        keys = list(range(1,27))
+        values = [chr(i) for i in range(65,91)]
+        
+        mydict = dict(zip(keys, values))
+        
+        res = []
+        while n > 0:
+            
+            rem = n % 26
+            n = n // 26  
+            if rem == 0:
+                rem = 26 
+                n -= 1
+            res.append(mydict[rem])
+            
+        return ''.join(res[::-1])
