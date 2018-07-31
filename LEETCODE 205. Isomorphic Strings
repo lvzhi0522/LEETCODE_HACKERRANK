@@ -1,0 +1,15 @@
+class Solution:
+    def isIsomorphic(self, s, t):
+        
+        mydict = {}
+        myvalue = {0}
+        for i in range(len(s)):
+            if s[i] in mydict:
+                if mydict[s[i]] != t[i]:
+                    return False
+            elif t[i] in myvalue:
+                return False
+            else:
+                mydict[s[i]] = t[i]
+                myvalue.add(t[i])
+        return True
