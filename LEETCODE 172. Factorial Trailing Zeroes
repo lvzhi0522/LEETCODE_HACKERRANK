@@ -1,0 +1,32 @@
+class Solution:
+    
+    def trailingZeroes(self, n):
+        
+        
+        
+        total = 0
+        while n >= 5:
+            n = n - n % 5
+            total = total + n//5
+            n = n//5
+        return total
+        
+        
+        
+
+#     def trailingZeroes(self, n):
+        
+#         n = n - n % 5
+        
+#         total = 0
+#         while  n > 0:
+#             total += self.five(n)
+#             n -= 5
+#         return total
+            
+#     def five(self, n):
+#         count = 0
+#         while n > 1 and (n/5).is_integer():
+#             n = n/5
+#             count += 1
+#         return count
