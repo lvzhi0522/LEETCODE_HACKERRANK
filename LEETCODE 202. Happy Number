@@ -1,0 +1,20 @@
+class Solution:
+    def isHappy(self, n):
+        
+        
+        cache = {n}
+        
+        while n != 1:
+            n = sum([i**2 for i in list(map(int, list(str(n))))])
+            if n in cache:return False
+            else: cache.add(n)
+        return True
+        
+        
+#         cache = {n:1}
+        
+#         while n != 1:
+#             n = sum([i**2 for i in list(map(int, list(str(n))))])
+#             if n in cache:return False
+#             else: cache[n] = 1
+#         return True
