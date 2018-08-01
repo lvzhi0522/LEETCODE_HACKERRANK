@@ -1,0 +1,9 @@
+class Solution:
+    def containsDuplicate(self, nums):
+        
+        #return len(set(nums)) != len(nums)
+        cache = set()
+        for i in nums:
+            if i in cache: return True
+            cache.add(i)
+        return False
