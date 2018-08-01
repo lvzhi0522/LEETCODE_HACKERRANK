@@ -1,0 +1,9 @@
+class Solution:
+    def containsNearbyDuplicate(self, nums, k):
+        cache = set()
+        for i in range(len(nums)):
+            if nums[i] in cache: return True
+            cache.add(nums[i])
+            if len(cache)>k:
+                cache.remove(nums[i-k])
+        return False
