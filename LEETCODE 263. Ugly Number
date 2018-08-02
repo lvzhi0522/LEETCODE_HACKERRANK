@@ -1,0 +1,48 @@
+class Solution:
+    def isUgly(self, num):
+        
+        if num == 0: return False
+        
+        for p in 2, 3, 5:
+            while num % p == 0:
+                num /= p
+        return num == 1
+        
+#         if num == 0: return False
+        
+#         while num != 1:
+#             rem = num % 2
+#             if rem != 0: break
+#             num = num//2
+#         while num != 1:
+#             rem = num % 3
+#             if rem != 0: break
+#             num = num//3        
+#         while num != 1:
+#             rem = num % 5
+#             if rem != 0: break
+#             num = num//5
+            
+#         return num == 1
+        
+        
+    
+#         if num == 0: return False
+#         if num == 1: return True
+        
+#         result = [1]
+        
+#         for i in result:
+            
+#             if i*2 == num or i*3 == num or i*5 == num:
+#                 return True
+            
+#             if i*2 not in result and i*2 < num:
+#                 result.append(i*2)
+#             if i*3 not in result and i*3 < num:
+#                 result.append(i*3)
+#             if i*5 not in result and i*5 < num:
+#                 result.append(i*5)
+
+                
+#         return False
